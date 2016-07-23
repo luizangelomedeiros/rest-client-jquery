@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>CLIENTE REST VEICULOS</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="jquery_rest_crud.js"></script>
+
+  <script type="text/javascript">
+	$(function(){	
+		// recuperar
+		var editar = getUrlParameter('id');
+		if(editar){	
+			recuperar(editar);
+		}
+		
+		// enviar
+		$(".enviar").click(function(){			
+			var marcaN	= $("#marcaVal").val();
+			var modeloN = $("#modeloVal").val();
+			var anoN 	= $("#anoVal").val();
+			var placaN 	= $("#placaVal").val();
+			var corN 	= $("#corVal").val();
+				
+			if(editar){				
+				/* editar */ 
+				atualizar(editar, marcaN, modeloN, anoN, placaN, corN);
+				
+			}else{			
+				/* inserir */
+				inserir(marcaN, modeloN, anoN, placaN, corN);
+			}
+		});		
+	});  
+		
+	
+  </script>
+
+</head>
+<body>
+
+  <div class="form">
+    <h2 class="titulo"> CLIENTE REST VEICULOS </h2>
+    <input type="text" id="marcaVal" class="input" placeholder="Marca do Veículo">
+    <input type="text" id="modeloVal" class="input" placeholder="Modelo do Veículo">
+    <input type="text" id="anoVal" class="input" placeholder="Ano do Veículo">
+    <input type="text" id="corVal" class="input" placeholder="Cor do Veículo">
+    <input type="text" id="placaVal" class="input" placeholder="Placa do Veículo">
+    <input type="submit" value="Enviar" class="enviar">
+  </div>
+
+</body>
+</html>
